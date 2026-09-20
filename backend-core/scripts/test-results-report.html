@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Testing and Evaluation Report - Insight Opticals</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; background: #f3f4f6; margin: 0; padding: 30px; color: #1f2937; }
+    .container { max-width: 1050px; margin: 0 auto; background: #ffffff; padding: 40px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+    h1 { margin-top: 0; color: #111827; border-bottom: 2px solid #e5e7eb; padding-bottom: 12px; font-size: 26px; }
+    .subtitle { color: #6b7280; font-size: 15px; margin-bottom: 30px; }
+    .kpi-row { display: flex; gap: 20px; margin-bottom: 35px; }
+    .kpi-card { flex: 1; padding: 20px; border-radius: 8px; background: #f9fafb; border: 1px solid #e5e7eb; text-align: center; }
+    .kpi-val { font-size: 32px; font-weight: 800; color: #10b981; margin: 8px 0; }
+    .kpi-label { font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; color: #6b7280; }
+    .chart-box { max-width: 320px; margin: 0 auto 40px auto; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 14px; }
+    th, td { padding: 12px 14px; border: 1px solid #e5e7eb; text-align: left; }
+    th { background: #f9fafb; font-weight: 700; color: #374151; }
+    tr:nth-child(even) { background: #fcfdfd; }
+    .badge { display: inline-block; padding: 4px 10px; border-radius: 9999px; font-size: 12px; font-weight: 700; }
+    .badge-pass { background: #d1fae5; color: #065f46; }
+    .footer { margin-top: 30px; text-align: center; font-size: 13px; color: #9ca3af; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Chapter 4: Testing & Evaluation Results</h1>
+    <div class="subtitle">Insight Opticals – Optical Store and Virtual Try-On Management System (Nethmini Opticals)</div>
+    
+    <div class="kpi-row">
+      <div class="kpi-card">
+        <div class="kpi-label">Evaluated Areas</div>
+        <div class="kpi-val" style="color: #3b82f6;">20</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Passed Tests</div>
+        <div class="kpi-val">20</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Failed Tests</div>
+        <div class="kpi-val" style="color: #10b981;">0</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Overall Success Rate</div>
+        <div class="kpi-val">100%</div>
+      </div>
+    </div>
+
+    <h2 style="text-align: center; font-size: 18px; margin-bottom: 10px;">Figure 4.1: Summary of System Testing Results</h2>
+    <div class="chart-box">
+      <canvas id="testPieChart"></canvas>
+    </div>
+
+    <h2>Table 4.1: Detailed Verification of System Testing Areas</h2>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 5%; text-align: center;">#</th>
+          <th style="width: 28%;">Testing Area</th>
+          <th style="width: 25%;">Target Component / Module</th>
+          <th style="width: 10%; text-align: center;">Result</th>
+          <th style="width: 32%;">Verification Evidence / Outcome</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+    <tr>
+      <td style="text-align: center; font-weight: bold;">1</td>
+      <td style="font-weight: 600;">User Registration & Credential Hashing</td>
+      <td><code>bcryptjs</code></td>
+      <td style="text-align: center;"><span class="badge badge-pass">PASSED</span></td>
+      <td style="font-size: 0.9em; color: #4b5563;">Passwords salted with cost factor 10 & securely validated.</td>
+    </tr>
+  
+    <tr>
+      <td style="text-align: center; font-weight: bold;">2</td>
+      <td style="font-weight: 600;">Role-Based Access Control (RBAC) & JWT</td>
+      <td><code>authMiddleware & jsonwebtoken</code></td>
+      <td style="text-align: center;"><span class="badge badge-pass">PASSED</span></td>
+      <td style="font-size: 0.9em; color: #4b5563;">Stateless JWT successfully generated and role claim validated.</td>
+    </tr>
+  
+    <tr>
+      <td style="text-align: center; font-weight: bold;">3</td>
+      <td style="font-weight: 600;">Product Catalog Browsing & Multi-Criteria Search</td>
+      <td><code>Catalog.jsx & products.js</code></td>
+      <td style="text-align: center;"><span class="badge badge-pass">PASSED</span></td>
+      <td style="font-size: 0.9em; color: #4b5563;">Dynamic filtering by shape, brand, and target demographic verified.</td>
+    </tr>
+  
+    <tr>
+      <td style="text-align: center; font-weight: bold;">4</td>
+      <td style="font-weight: 600;">Frame & Lens Inventory Management</td>
+      <td><code>StockManager.jsx & Prisma</code></td>
+      <td style="text-align: center;"><span class="badge badge-pass">PASSED</span></td>
+      <td style="font-size: 0.9em; color: #4b5563;">Inventory levels decremented accurately upon simulated order transaction.</td>
+    </tr>
+  
+    <tr>
+      <td style="text-align: center; font-weight: bold;">5</td>
+      <td style="font-weight: 600;">Low-Stock Threshold Alerting Logic</td>
+      <td><code>Notification Subsystem</code></td>
+      <td style="text-align: center;"><span class="badge badge-pass">PASSED</span></td>
+      <td style="font-size: 0.9em; color: #4b5563;">Alert correctly triggered when stock level (3) is <= threshold (5).</td>
+    </tr>
+  
+    <tr>
+      <td style="text-align: center; font-weight: bold;">6</td>
+      <td style="font-weight: 600;">3D Frame Calibration Model Parameters</td>
+      <td><code>FrameCalibratorModal.jsx</code></td>
+      <td style="text-align: center;"><span class="badge badge-pass">PASSED</span></td>
+      <td style="font-size: 0.9em; color: #4b5563;">3-Axis offsets (X, Y, Z) and scale multipliers verified in product schema.</td>
+    </tr>
+  
+    <tr>
+      <td style="text-align: center; font-weight: bold;">7</td>
+      <td style="font-weight: 600;">AI Face Shape Geometric Classification</td>
+      <td><code>face_analyzer.py & MediaPipe</code></td>
+      <td style="text-align: center;"><span class="badge badge-pass">PASSED</span></td>
+      <td style="font-size: 0.9em; color: #4b5563;">Proportional Euclidean ratios correctly classify Round and Oval facial morphologies.</td>
+    </tr>
+  
+    <tr>
+      <td style="text-align: center; font-weight: bold;">8</td>
+      <td style="font-weight: 600;">Frame Shape Style Recommendation Mapping</td>
+      <td><code>LensFrameAdvisor.jsx</code></td>
+      <td style="text-align: center;"><span class="badge badge-pass">PASSED</span></td>
+      <td style="font-size: 0.9em; color: #4b5563;">Harmonious geometric contrast rules map Round faces to Angular/Rectangle frames.</td>
+    </tr>
+  
+    <tr>
+      <td style="text-align: center; font-weight: bold;">9</td>
+      <td style="font-weight: 600;">Real-Time 3D Virtual Try-On Head Pose Anchoring</td>
+      <td><code>TryOnCanvas3D.jsx & Three.js</code></td>
+      <td style="text-align: center;"><span class="badge badge-pass">PASSED</span></td>
+      <td style="font-size: 0.9em; color: #4b5563;">Interpupillary distance (64px) and head roll angle derived accurately for WebGL.</td>
+    </tr>
+  
+    <tr>
+      <td style="text-align: center; font-weight: bold;">10</td>
+      <td style="font-weight: 600;">Prescription Image Preprocessing Pipeline</td>
+      <td><code>Jimp Image Normalization</code></td>
+      <td style="text-align: center;"><span class="badge badge-pass">PASSED</span></td>
+      <td style="font-size: 0.9em; color: #4b5563;">Image resizing and contrast compositing executed successfully.</td>
+    </tr>
+  
+    <tr>
+      <td style="text-align: center; font-weight: bold;">11</td>
+      <td style="font-weight: 600;">Multimodal AI Prescription Extraction Schema</td>
+      <td><code>Google Gemini 1.5 Flash Vision</code></td>
+      <td style="text-align: center;"><span class="badge badge-pass">PASSED</span></td>
+      <td style="font-size: 0.9em; color: #4b5563;">Clinical JSON schema validated with bilateral OD/OS sphere, cyl, axis, and PD.</td>
+    </tr>
+  
+    <tr>
+      <td style="text-align: center; font-weight: bold;">12</td>
+      <td style="font-weight: 600;">Fallback OCR Text Extraction & Regex Parser</td>
+      <td><code>Tesseract.js & Regex Parser</code></td>
+      <td style="text-align: center;"><span class="badge badge-pass">PASSED</span></td>
+      <td style="font-size: 0.9em; color: #4b5563;">Extracted numerical optical parameters with signs (+/-) from noisy text string.</td>
+    </tr>
+  
+    <tr>
+      <td style="text-align: center; font-weight: bold;">13</td>
+      <td style="font-weight: 600;">Optician Clinical Prescription Verification Workflow</td>
+      <td><code>PrescriptionReview.jsx</code></td>
+      <td style="text-align: center;"><span class="badge badge-pass">PASSED</span></td>
+      <td style="font-size: 0.9em; color: #4b5563;">Clinical safeguard verified: PENDING status transitioned to VALIDATED after review.</td>
+    </tr>
+  
+    <tr>
+      <td style="text-align: center; font-weight: bold;">14</td>
+      <td style="font-weight: 600;">Lens Customization & Composite Pricing Engine</td>
+      <td><code>CheckoutCustomizerModal.jsx</code></td>
+      <td style="text-align: center;"><span class="badge badge-pass">PASSED</span></td>
+      <td style="font-size: 0.9em; color: #4b5563;">Frame price (12k) + Progressive lens (8.5k) + Anti-Glare (1.5k) = LKR 22,000 verified.</td>
+    </tr>
+  
+    <tr>
+      <td style="text-align: center; font-weight: bold;">15</td>
+      <td style="font-weight: 600;">Shopping Cart & Order Placement with Rx Linkage</td>
+      <td><code>orders.js & Prisma Order Model</code></td>
+      <td style="text-align: center;"><span class="badge badge-pass">PASSED</span></td>
+      <td style="font-size: 0.9em; color: #4b5563;">Order created with foreign key linkage to validated prescription.</td>
+    </tr>
+  
+    <tr>
+      <td style="text-align: center; font-weight: bold;">16</td>
+      <td style="font-weight: 600;">Order Lifecycle & Fulfillment Tracking</td>
+      <td><code>OrderManager.jsx</code></td>
+      <td style="text-align: center;"><span class="badge badge-pass">PASSED</span></td>
+      <td style="font-size: 0.9em; color: #4b5563;">Order fulfillment status transitions verified across physical shop stages.</td>
+    </tr>
+  
+    <tr>
+      <td style="text-align: center; font-weight: bold;">17</td>
+      <td style="font-weight: 600;">Clinical Appointment Slot Booking & Conflict Prevention</td>
+      <td><code>appointments.js & Scheduler</code></td>
+      <td style="text-align: center;"><span class="badge badge-pass">PASSED</span></td>
+      <td style="font-size: 0.9em; color: #4b5563;">Conflict-free availability calculation successfully excludes booked slots.</td>
+    </tr>
+  
+    <tr>
+      <td style="text-align: center; font-weight: bold;">18</td>
+      <td style="font-weight: 600;">Automated Notification Subsystem & Alerts</td>
+      <td><code>notifications.js & Nodemailer</code></td>
+      <td style="text-align: center;"><span class="badge badge-pass">PASSED</span></td>
+      <td style="font-size: 0.9em; color: #4b5563;">Customer pickup alert queued and prepared for in-app/email dispatch.</td>
+    </tr>
+  
+    <tr>
+      <td style="text-align: center; font-weight: bold;">19</td>
+      <td style="font-weight: 600;">Customer Feedback & Frame Review Aggregator</td>
+      <td><code>FeedbackReviewManager.jsx</code></td>
+      <td style="text-align: center;"><span class="badge badge-pass">PASSED</span></td>
+      <td style="font-size: 0.9em; color: #4b5563;">Aggregated average rating calculated accurately (4.7 / 5.0 stars).</td>
+    </tr>
+  
+    <tr>
+      <td style="text-align: center; font-weight: bold;">20</td>
+      <td style="font-weight: 600;">Business Analytics & Revenue Reporting</td>
+      <td><code>RevenueReports.jsx & AnalyticsOverview</code></td>
+      <td style="text-align: center;"><span class="badge badge-pass">PASSED</span></td>
+      <td style="font-size: 0.9em; color: #4b5563;">Aggregated gross turnover accurately computed across transactional order logs.</td>
+    </tr>
+  
+      </tbody>
+    </table>
+
+    <div class="footer">
+      Generated automatically by Insight Opticals Test Suite • Execution Time: 0.16s • Date: 9/12/2026
+    </div>
+  </div>
+
+  <script>
+    const ctx = document.getElementById('testPieChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Passed (20)', 'Failed (0)'],
+        datasets: [{
+          data: [20, 0],
+          backgroundColor: ['#10b981', '#ef4444'],
+          borderWidth: 2,
+          borderColor: '#ffffff'
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: 'bottom' }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
