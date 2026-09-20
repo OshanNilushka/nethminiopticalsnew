@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { getImage } from "../constants/images";
-import { API_BASE_URL } from "../config/api";
+import { API_BASE_URL, parseResponseData } from "../config/api";
 
 export default function SignUp() {
   const [fullName, setFullName] = useState("");
@@ -70,7 +70,7 @@ export default function SignUp() {
         }),
       });
 
-      const data = await response.json();
+      const data = await parseResponseData(response);
 
       if (!response.ok) {
         throw new Error(data.error || "Failed to create account.");

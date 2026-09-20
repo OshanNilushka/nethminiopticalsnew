@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { getImage } from "../constants/images";
-import { API_BASE_URL } from "../config/api";
+import { API_BASE_URL, parseResponseData } from "../config/api";
 
 export default function Login() {
   const [role, setRole] = useState("PATIENT"); // PATIENT, OPTICIAN, ADMIN
@@ -104,7 +104,7 @@ export default function Login() {
         }),
       });
 
-      const data = await response.json();
+      const data = await parseResponseData(response);
 
       if (!response.ok) {
         throw new Error(data.error || "Failed to log in.");
@@ -170,7 +170,7 @@ export default function Login() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: resetEmail }),
       });
-      const data = await response.json();
+      const data = await parseResponseData(response);
       if (!response.ok) throw new Error(data.error || "Failed to send reset code.");
       
       setSuccessMessage(data.message || "Reset OTP sent successfully.");
@@ -201,7 +201,7 @@ export default function Login() {
           newPassword: newPassword,
         }),
       });
-      const data = await response.json();
+      const data = await parseResponseData(response);
       if (!response.ok) throw new Error(data.error || "Failed to reset password.");
       
       alert("Password reset successfully! You can now log in.");
