@@ -10,6 +10,7 @@
     "format": "prettier --write \"src/**/*.js\"",
     "db:dev": "prisma dev",
     "start": "node src/main.js",
+    "postinstall": "prisma generate",
     "start:dev": "node --watch src/main.js",
     "test": "node scripts/run-all-system-tests.js",
     "test:system": "node scripts/run-all-system-tests.js",
