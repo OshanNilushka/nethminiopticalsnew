@@ -1,13 +1,7 @@
 {
   "name": "nethmini-opticals-root",
   "private": true,
-  "workspaces": [
-    "frontend"
-  ],
   "scripts": {
-    "build": "cd frontend && npm install && npm run build"
-  },
-  "devDependencies": {
-    "vite": "^8.0.12"
+    "build": "cd frontend && npm install --legacy-peer-deps && npm run build"
   }
 }
