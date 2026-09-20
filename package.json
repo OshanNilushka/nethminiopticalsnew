@@ -1,7 +1,9 @@
 {
   "name": "nethmini-opticals-root",
   "private": true,
+  "type": "module",
   "scripts": {
+    "start": "node backend-core/src/main.js",
     "build": "cd frontend && npm install --legacy-peer-deps && npm run build"
   }
 }
