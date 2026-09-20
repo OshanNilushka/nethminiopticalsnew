@@ -810,8 +810,8 @@ router.post('/payhere-hash', async (req, res) => {
       currency,
       hash,
       notify_url: `${ngrokUrl}/api/payments/notify`,
-      return_url: 'http://localhost:5173/#/dashboard',
-      cancel_url: 'http://localhost:5173/#/catalog',
+      return_url: `${process.env.FRONTEND_URL || 'http://localhost:5173'}/#/dashboard`,
+      cancel_url: `${process.env.FRONTEND_URL || 'http://localhost:5173'}/#/catalog`,
       sandbox: true,
     });
   } catch (err) {

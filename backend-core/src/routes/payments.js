@@ -35,8 +35,8 @@ router.post('/hash', async (req, res) => {
       currency,
       hash,
       notify_url:   `${NGROK_URL}/api/payments/notify`,
-      return_url:   'http://localhost:5173/#/dashboard',
-      cancel_url:   'http://localhost:5173/#/catalog',
+      return_url:   `${process.env.FRONTEND_URL || 'http://localhost:5173'}/#/dashboard`,
+      cancel_url:   `${process.env.FRONTEND_URL || 'http://localhost:5173'}/#/catalog`,
       sandbox:      true,
     });
   } catch (err) {
